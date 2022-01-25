@@ -32,7 +32,7 @@ func CheckId(id int) (*model.Data, error) {
 	return data, nil
 }
 
-//SaveData 向数据库插入用户信息
+//SaveData 向数据库插入奖品信息
 func SaveData(id int, award string) error {
 	sqlStr := "update datas set award = ? where id = ?"
 	_, err := utils.Db.Exec(sqlStr, award, id)
@@ -41,6 +41,8 @@ func SaveData(id int, award string) error {
 	}
 	return nil
 }
+
+//DeleteData 清除奖品数据
 func DeleteData(id int) (*model.Data, error) {
 	sqlStr := "update datas set award='' where  id = ?"
 	row := utils.Db.QueryRow(sqlStr, id)
